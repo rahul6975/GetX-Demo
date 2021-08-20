@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:getx_demo/controllers/cart_controller.dart';
+import 'package:getx_demo/controllers/shopping_controller.dart';
 
 class ShoppingPage extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
@@ -29,11 +32,11 @@ class ShoppingPage extends StatelessWidget {
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         '${controller.products[index].productName}',
@@ -56,17 +59,19 @@ class ShoppingPage extends StatelessWidget {
                                 textColor: Colors.white,
                                 child: Text('Add to Cart'),
                               ),
-                              Obx(() => IconButton(
-                                icon: controller
-                                    .products[index].isFavorite.value
-                                    ? Icon(Icons.check_box_rounded)
-                                    : Icon(Icons
-                                    .check_box_outline_blank_outlined),
-                                onPressed: () {
-                                  controller.products[index].isFavorite
-                                      .toggle();
-                                },
-                              ))
+                              Obx(
+                                () => IconButton(
+                                  icon: controller
+                                          .products[index].isFavorite.value
+                                      ? Icon(Icons.check_box_rounded)
+                                      : Icon(Icons
+                                          .check_box_outline_blank_outlined),
+                                  onPressed: () {
+                                    controller.products[index].isFavorite
+                                        .toggle();
+                                  },
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -76,12 +81,14 @@ class ShoppingPage extends StatelessWidget {
                 },
               ),
             ),
-            GetX<CartController>(builder: (controller) {
-              return Text(
-                'Total amount: \$ ${controller.totalPrice}',
-                style: TextStyle(fontSize: 32, color: Colors.white),
-              );
-            }),
+            GetX<CartController>(
+              builder: (controller) {
+                return Text(
+                  'Total amount: \$ ${controller.totalPrice}',
+                  style: TextStyle(fontSize: 32, color: Colors.white),
+                );
+              },
+            ),
             SizedBox(height: 100),
           ],
         ),
@@ -93,12 +100,14 @@ class ShoppingPage extends StatelessWidget {
           Icons.add_shopping_cart_rounded,
           color: Colors.black,
         ),
-        label: GetX<CartController>(builder: (controller) {
-          return Text(
-            controller.count.toString(),
-            style: TextStyle(color: Colors.black, fontSize: 24),
-          );
-        }),
+        label: GetX<CartController>(
+          builder: (controller) {
+            return Text(
+              controller.count.toString(),
+              style: TextStyle(color: Colors.black, fontSize: 24),
+            );
+          },
+        ),
       ),
     );
   }

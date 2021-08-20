@@ -1,6 +1,7 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:getx_demo/model/product.dart';
 
+
 class ShoppingController extends GetxController {
   // var products = List<Product>().obs;
   List<Product> products = [].obs;
@@ -34,6 +35,6 @@ class ShoppingController extends GetxController {
           productName: 'ThirdProd'),
     ];
 
-    products.value = productResult;
+    products.value= productResult;
   }
 }

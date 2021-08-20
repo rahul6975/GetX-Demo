@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getx_demo/views/shopping_page.dart';
 
 void main() {
   runApp(MyApp());
