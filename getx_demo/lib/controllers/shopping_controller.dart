@@ -1,10 +1,10 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:getx_demo/model/product.dart';
+import 'package:get/get.dart';
 
 
 class ShoppingController extends GetxController {
-  // var products = List<Product>().obs;
-  List<Product> products = [].obs;
+  var products = [].obs;
 
   @override
   void onInit() {
